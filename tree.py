@@ -1,13 +1,13 @@
 from node import Node
+from singleton import Singleton
 
-class Tree(object):
+class Tree(Singleton):
 	__slots__ = ["root"]
 
 	def __init__(self):
 		super(Tree, self).__setattr__("root", Node(0))
 
 	def __setattr__(self, name, value):
-		print("in __setattr__")
 		msg = "'%s' has no attribute %s" % (self.__class__, name)
 		raise AttributeError(msg)
 	
