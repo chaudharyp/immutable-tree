@@ -1,12 +1,15 @@
 from node import Node
 
-class Tree:
-	def __init__(self):
-		self.__root = Node(0)
+class Tree(object):
+	__slots__ = ["root"]
 
-	@property
-	def root(self):
-	    return self.__root
+	def __init__(self):
+		super(Tree, self).__setattr__("root", Node(0))
+
+	def __setattr__(self, name, value):
+		print("in __setattr__")
+		msg = "'%s' has no attribute %s" % (self.__class__, name)
+		raise AttributeError(msg)
 	
 	def insertNode(self, root, node):
 		if root.data == 0 or root is None:
@@ -24,7 +27,7 @@ class Tree:
 					self.insertNode(root.rchild, node)
 
 	def insertData(self, data):
-		root = self.__root
+		root = self.root
 		node = Node(data)
 		self.insertNode(root, node)
 

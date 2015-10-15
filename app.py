@@ -16,6 +16,8 @@ tree.insertData(35)
 tree.insertData(32)
 tree.insertData(36)
 
+#tree.newProp = "testing immutability"	-- gives error because the object is now immutable
+
 tree.inorderPrint(tree.root)
 
 isKeyPresent = tree.isKeyPresent(tree.root, 3)
@@ -25,4 +27,3 @@ tree.delete(tree.root, 50)
 tree.delete(tree.root, 36)
 tree.delete(tree.root, 40)
 tree.inorderPrint(tree.root)
-print(tree.root.lchild)
