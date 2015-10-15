@@ -36,11 +36,36 @@ class Tree:
 	    self.inorderPrint(root.rchild)
 
 	def isKeyPresent(self, root, key):
-		if root is None:
-			return False
-		if root.data == key:
-			return True
-		if root.data > key:
-			return self.isKeyPresent(root.lchild, key)
-		else:
-			return self.isKeyPresent(root.rchild, key)
+		keyFound = False
+		while root is not None:
+			if root.data > key:
+				root = root.lchild
+			else if root.data < key:
+				root = root.rchild
+			else:
+				keyFound = True
+				break;
+		return keyFound
+
+
+	def delete(self, root, node):
+		while root is not None:
+			if root.data > key:
+				root = root.lchild
+			else if root.data < key:
+				root = root.rchild
+			else:
+				if root.lchild is None:
+					root.addData(root.rchild.data)
+					root.rchild = None
+				else if root.rchild is None:
+					root.addData(root.lchild.data)
+					root.lchild = None
+				else:
+					largestInLeftSubtree = largest(root.lchild)
+					
+
+	def largest(root):
+		if root.rchild is None:
+			return root
+		largest(root.rchild)
