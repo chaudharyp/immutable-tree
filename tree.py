@@ -40,7 +40,7 @@ class Tree:
 		while root is not None:
 			if root.data > key:
 				root = root.lchild
-			else if root.data < key:
+			elif root.data < key:
 				root = root.rchild
 			else:
 				keyFound = True
@@ -48,24 +48,41 @@ class Tree:
 		return keyFound
 
 
-	def delete(self, root, node):
+	def delete(self, root, key):
+		parent = root
 		while root is not None:
+			temp = root
 			if root.data > key:
 				root = root.lchild
-			else if root.data < key:
+			elif root.data < key:
 				root = root.rchild
 			else:
-				if root.lchild is None:
-					root.addData(root.rchild.data)
-					root.rchild = None
-				else if root.rchild is None:
-					root.addData(root.lchild.data)
-					root.lchild = None
-				else:
-					largestInLeftSubtree = largest(root.lchild)
-					
+				hasOneOrNoChild = False
+				replacementNode = None
+				if not root.hasChild():
+					hasOneOrNoChild = True
+					replacementNode = None
+				elif root.lchild is None:
+					hasOneOrNoChild = True
+					replacementNode = root.rchild
+				elif root.rchild is None:
+					hasOneOrNoChild = True
+					replacementNode = root.lchild
 
-	def largest(root):
+				if hasOneOrNoChild:
+					if parent.lchild.data == root.data:
+						parent.addLeftChild(replacementNode)
+					else:
+						parent.addRightChild(replacementNode)
+					break
+				else:
+					largestInLeftSubtree = self.largest(root.lchild)
+					root.addData(largestInLeftSubtree.data)
+					root = root.lchild
+					key = largestInLeftSubtree.data
+			parent = temp
+
+	def largest(self, root):
 		if root.rchild is None:
 			return root
-		largest(root.rchild)
+		return self.largest(root.rchild)

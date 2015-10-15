@@ -16,6 +16,9 @@ class Node:
 	def rchild(self):
 	    return self.__rchild
 
+	def hasChild(self):
+		return self.__rchild is not None or self.__lchild is not None
+
 	def addLeftChild(self, node):
 		self.__lchild = node
 
