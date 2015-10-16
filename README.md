@@ -7,6 +7,8 @@ Immutable, thread-safe binary search tree implementation with the following func
 * Finding the largest key in the tree
 
 Unit tests have been written using unittest standard library.
+The code runs using Python 3.4 interpreter.
+Virtualenv is used to separate th environment and manage dependencies.
 
 What can be improved upon?
 * The input can be taken interactively from command line instead of hardcoding it into a file.
