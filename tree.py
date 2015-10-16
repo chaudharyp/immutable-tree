@@ -73,7 +73,7 @@ class Tree(Singleton):
 					replacementNode = root.lchild
 
 				if hasOneOrNoChild:
-					if parent.lchild.data == root.data:
+					if parent.lchild is not None and parent.lchild.data == root.data:
 						parent.addLeftChild(replacementNode)
 					else:
 						parent.addRightChild(replacementNode)
