@@ -1,5 +1,6 @@
 import threading
 
+# Creating a singleton class for thread safety
 class Singleton(object):
 	__singleton_lock = threading.Lock()
 	__singleton_instance = None

@@ -3,6 +3,7 @@ from tree import Tree
 
 class TestTree(unittest.TestCase):
   def setUp(self):
+    # Creating the tree
     self.tree = Tree()
     self.tree.insertData(3)
     self.tree.insertData(1)
@@ -21,10 +22,13 @@ class TestTree(unittest.TestCase):
 
   def testDelete(self):
     root = self.tree.root
+    # Testing deletion of node with 2 children.
     self.tree.delete(root, 3)
     self.assertEqual(root.data, 1)
+    # Testing deletion of node with 1 child.
     self.tree.delete(root, 7)
     self.assertEqual(root.rchild.data, 5)
+    # Testing deletion of leaf node.
     self.tree.delete(root, 5)
     self.assertEqual(root.rchild, None)
 
